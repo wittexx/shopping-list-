@@ -50,6 +50,19 @@ jobs:
           echo "Branch: ${{ github.ref_name }}"
           echo "=============="
 
+      - name: manual info
+        if: github.event_name == 'workflow_dispatch'
+        run: |
+          echo "======"
+          echo "Triggered by: ${{github.actor}}"
+          echo "branch: ${{github.ref_name}}"
+          echo "Repository : ${{github.repository}}"
+          echo "Run Number: ${{github.run_number}}" 
+          echo "workflow: ${{github.workflow}}"
+          echo "======"
+
+       
+
   
   
 
