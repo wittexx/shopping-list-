@@ -52,7 +52,7 @@ jobs:
  
 
       - name: manual info
-        if: github.event_name == 'workflow_dispatch
+        if: github.event_name == 'workflow_dispatch'
         run: |
           echo "======"
           echo "Triggered by: ${{github.actor}}"
