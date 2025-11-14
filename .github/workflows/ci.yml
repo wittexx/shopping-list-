@@ -49,17 +49,31 @@ jobs:
           echo "Committer: ${{ github.event.head_commit.committer.name }}"
           echo "Branch: ${{ github.ref_name }}"
           echo "=============="
+ 
 
       - name: manual info
-        if: github.event_name == 'workflow_dispatch'
+        if: github.event_name == 'workflow_dispatch
         run: |
           echo "======"
           echo "Triggered by: ${{github.actor}}"
-          echo "branch: ${{github.ref_name}}"
+          echo "Branch: ${{github.ref_name}}"
           echo "Repository : ${{github.repository}}"
           echo "Run Number: ${{github.run_number}}" 
           echo "workflow: ${{github.workflow}}"
           echo "======"
+       
+      - name: Pull Request info
+        if: github.event_name == 'pull_request'
+        run: |
+          echo "======"
+          echo "PR number: ${{github.event.pull_request.number}}"
+          echo "author: ${{github.event.pull_request.user.login}}"
+          echo "Source Branch: ${{github.head_ref}}"
+          echo "Target Branch: ${{github.base_ref}}"
+          echo "======"
+
+          
+
 
        
 
