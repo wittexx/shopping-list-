@@ -22,9 +22,14 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
+
+      - name: Setup .NET ${{ matrix.dotnet-version }}
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: ${{ matrix.dotnet-version }}
         
       - name: Build
-        run: dontnet build
+        run: dotnet build
 
       - name: Run tests
         if: success()
